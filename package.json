@@ -1,5 +1,5 @@
 {
     "scripts": {
-        "check": "for i in src/*.mo ; do $(vessel bin)/moc $(vessel sources) --check $i ; done",
+        "check": "for i in src/*.mo ; do $(vessel bin)/moc $(vessel sources) --check $i ; done"
     }
 }

@@ -18,8 +18,8 @@ module {
         #AmountTooSmall;
     };
 
-    // More Info: https://github.com/Psychedelic/wicp/blob/main/wicp/wicp.did
-    public type Interface = {
+    /// More Info: https://github.com/Psychedelic/wicp/blob/main/wicp/wicp.did
+    public type Interface = actor {
         /// Returns the amount which `spender` is still allowed to withdraw from `owner`.
         allowance : query (owner : Principal, spender : Principal) -> async Nat;
         approve : shared (spender : Principal, value : Nat) -> async TxReceipt;

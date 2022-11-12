@@ -1,6 +1,8 @@
 import DIP20 "dip20";
 
 module {
+    public let CANISTER_ID : Text = "utozz-siaaa-aaaam-qaaxq-cai";
+
     type TxReceipt = {
         #Ok  : Nat; 
         #Err : TxError;

@@ -1,7 +1,7 @@
 import DIP20 "dip20";
 
 module {
-    public let SWAP_CANISTER_ID = "3xwpq-ziaaa-aaaah-qcn4a-cai";
+    public let CANISTER_ID = "3xwpq-ziaaa-aaaah-qcn4a-cai";
 
     public type PairInfoExt = {
         id                   : Text;

@@ -1,14 +1,13 @@
-import DIP20 "dip20";
+import DIP20 "DIP20";
+import Result "Result";
 
 module {
     public let CANISTER_ID : Text = "utozz-siaaa-aaaam-qaaxq-cai";
+    public let ACCOUNT_ID : Text = "cc659fe529756bae6f72db9937c6c60cf7ad57eb4ac5f930a75748927aab469a";
 
-    type TxReceipt = {
-        #Ok  : Nat; 
-        #Err : TxError;
-    };
+    public type TxReceipt = Result.Result<Nat, TxError>;
     
-    type TxError = {
+    public type TxError = {
         #InsufficientAllowance;
         #InsufficientBalance;
         #ErrorOperationStyle;

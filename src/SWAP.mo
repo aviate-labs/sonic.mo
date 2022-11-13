@@ -1,4 +1,4 @@
-import DIP20 "dip20";
+import DIP20 "DIP20";
 
 module {
     public let CANISTER_ID = "3xwpq-ziaaa-aaaah-qcn4a-cai";

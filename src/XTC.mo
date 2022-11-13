@@ -1,5 +1,5 @@
-import DIP20 "dip20";
-import RResult "rresult";
+import DIP20 "DIP20";
+import Result "Result";
 
 module {
     public let CANISTER_ID : Text = "aanaa-xaaaa-aaaah-aaeiq-cai";
@@ -46,7 +46,7 @@ module {
             #InsufficientXTCFee;
         };
 
-        public type TxReceipt = RResult.Result<Nat, TxError>;
+        public type TxReceipt = Result.Result<Nat, TxError>;
 
         public type Interface = actor {
             allowance       : query  (Principal, Principal)      -> async (Nat);
@@ -79,9 +79,9 @@ module {
         #NotSufficientLiquidity;
     };
 
-    public type BurnResult = RResult.Result<TransactionId, BurnError>;
+    public type BurnResult = Result.Result<TransactionId, BurnError>;
 
-    public type TxReceiptLegacy = RResult.Result<Nat, {
+    public type TxReceiptLegacy = Result.Result<Nat, {
         #InsufficientAllowance;
         #InsufficientBalance;
     }>;
@@ -90,7 +90,7 @@ module {
         #NotSufficientLiquidity;
     };
 
-    public type MintResult = RResult.Result<TransactionId, MintError>;
+    public type MintResult = Result.Result<TransactionId, MintError>;
 
     public type CallResult = {
         // BUG(?) return : Blob;
@@ -98,9 +98,9 @@ module {
         result : Blob;
     };
 
-    public type ResultCall = RResult.Result<CallResult, Text>;
+    public type ResultCall = Result.Result<CallResult, Text>;
 
-    public type CreateResult = RResult.Result<{ canister_id: Principal }, Text>;
+    public type CreateResult = Result.Result<{ canister_id: Principal }, Text>;
 
     public type EventDetail = {
         #Transfer : {
@@ -167,7 +167,7 @@ module {
         canisters_created_count : Nat64;
     };
 
-    public type ResultSend = RResult.Result<(), Text>;
+    public type ResultSend = Result.Result<(), Text>;
 
     /// More Info: https://github.com/Psychedelic/dank/blob/develop/candid/xtc.did
     public type Interface = actor {

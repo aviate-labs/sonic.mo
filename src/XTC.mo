@@ -5,7 +5,7 @@ module {
     public let CANISTER_ID : Text = "aanaa-xaaaa-aaaah-aaeiq-cai";
 
     // NOTE: the interface and types are slightly different from DIP20.
-    module ERC20 {
+    public module ERC20 {
         public type Time = Int;
 
         public type Operation = {

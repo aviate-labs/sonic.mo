@@ -1,5 +1,4 @@
 import DIP20 "DIP20";
-import Result "Result";
 
 module {
     public let CANISTER_ID : Text = "aanaa-xaaaa-aaaah-aaeiq-cai";
@@ -46,7 +45,10 @@ module {
             #InsufficientXTCFee;
         };
 
-        public type TxReceipt = Result.Result<Nat, TxError>;
+        public type TxReceipt = {
+            #Ok  : Nat;
+            #Err : TxError;
+        };
 
         public type Interface = actor {
             allowance       : query  (Principal, Principal)      -> async (Nat);
@@ -79,18 +81,27 @@ module {
         #NotSufficientLiquidity;
     };
 
-    public type BurnResult = Result.Result<TransactionId, BurnError>;
+    public type BurnResult = {
+        #Ok  : TransactionId;
+        #Err : BurnError;
+    };
 
-    public type TxReceiptLegacy = Result.Result<Nat, {
-        #InsufficientAllowance;
-        #InsufficientBalance;
-    }>;
+    public type TxReceiptLegacy = {
+        #Ok  : Nat;
+        #Err : {
+            #InsufficientAllowance;
+            #InsufficientBalance;
+        };
+    };
 
     public type MintError = {
         #NotSufficientLiquidity;
     };
 
-    public type MintResult = Result.Result<TransactionId, MintError>;
+    public type MintResult = {
+        #Ok  : TransactionId;
+        #Err : MintError;
+    };
 
     public type CallResult = {
         // BUG(?) return : Blob;
@@ -98,9 +109,15 @@ module {
         result : Blob;
     };
 
-    public type ResultCall = Result.Result<CallResult, Text>;
+    public type ResultCall = {
+        #Ok  : CallResult;
+        #Err : Text;
+    };
 
-    public type CreateResult = Result.Result<{ canister_id: Principal }, Text>;
+    public type CreateResult = {
+        #Ok  : { canister_id: Principal };
+        #Err : Text;
+    };
 
     public type EventDetail = {
         #Transfer : {
@@ -167,7 +184,10 @@ module {
         canisters_created_count : Nat64;
     };
 
-    public type ResultSend = Result.Result<(), Text>;
+    public type ResultSend = {
+        #Ok;
+        #Err : Text;
+    };
 
     /// More Info: https://github.com/Psychedelic/dank/blob/develop/candid/xtc.did
     public type Interface = actor {

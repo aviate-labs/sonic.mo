@@ -8,4 +8,4 @@ jobs:
         with:
           dfx-version: 0.10.1
           vessel-version: 0.6.3
-      - run: for i in src/*.mo ; do $(vessel bin)/moc $(vessel sources) --check $i ; done
+      - run: for i in $(find src -name '*.mo') ; do $(vessel bin)/moc $(vessel sources 2>/dev/null) --check $i ; done
